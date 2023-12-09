@@ -2,10 +2,10 @@ import express from "express";
 import {router as moviesRT} from "./src/routes/movies.js";
 
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config(); 
 
 
-console.log(process.env.WEATHER_API_KEY);
+  
 
 const PORT = process.env.PORT ?? 3000;
 const app = express();
