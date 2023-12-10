@@ -1,15 +1,13 @@
 import express from "express";
-import {router as moviesRT} from "./src/routes/movies.js";
-
+import {router as artistasRT} from "./src/routes/artistasRT.js";
 import dotenv from "dotenv";
 dotenv.config(); 
 
 
-  
-
+ 
 const PORT = process.env.PORT ?? 3000;
 const app = express();
-app.use(express.json());
+app.use(express.json()); 
 app.listen(PORT, err => {
     console.log( 
         err
@@ -18,5 +16,5 @@ app.listen(PORT, err => {
     );
 });
 
-app.use("/movies", moviesRT); //nombre del archivo enrutador que estamos definiendo);
+app.use("/artistas", artistasRT); //nombre del archivo enrutador que estamos definiendo);
 //nombre del archivo enrutador que estamos definiendo);
