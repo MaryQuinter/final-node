@@ -12,7 +12,7 @@ export class ArtistaCt{
 
     static async getById(req, res){
         const {id} = req.params;
-        // Verificamos si el ID es válido según criterios
+        //Verificamos si el ID es válido según criterios*****
         if (!isValidID(id)) {                        
             return res.status(422).json({ message: "Not valid ID" });
         }
@@ -24,16 +24,24 @@ export class ArtistaCt{
 
     static async deleteOne(req, res){
         const {id} = req.params
-        // Verificamos si el ID es válido según criterios
+        // Verificamos si el ID es válido según criterios*****
         if (!isValidID(id)) return res.status(422).json({ message: "Not valid ID" });
 
         const result = await ArtistaMd.deleteOne(id);
         if(!result) return res.status(404).json({message:"Artista Not Found"});
         res.status(204); //artista eliminado
     }  
+
+    static async addOne(req, res){
+        const artistaCreated = await ArtistaMd.addOne(req.body);
+        artistaCreated?
+        res.status(201).json({message: "Artista creado"})
+        :
+        res.status(500).json({message: "Internal Server Error" });
+    }
 }
+// Funcion verifica si el ID es un número válido y está dentro del rango del 1 al 12 (papelera)
 /* function isValidID(id) {
-    // Para verificar si el ID es un número válido y está dentro del rango del 1 al 12
     const parsedID = parseInt(id);
     return !isNaN(parsedID) && parsedID >= 1 && parsedID <= 12;
 }  */ 

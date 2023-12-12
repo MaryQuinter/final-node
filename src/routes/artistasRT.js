@@ -9,9 +9,7 @@ router.get("/:id", ArtistaCt.getById);
 
 router.delete("/:id", ArtistaCt.deleteOne);
 
-router.post("/", (req, res) =>{
-    console.log(req.body); 
-})
+router.post("/", ArtistaCt.addOne); 
 
 
 
